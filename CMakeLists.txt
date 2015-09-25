@@ -5,8 +5,6 @@ enable_language(CXX)
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${PROJECT_SOURCE_DIR})
 
-ADD_SUBDIRECTORY(lib/moonlight)
-
 find_package(kodi           REQUIRED)
 find_package(kodiplatform   REQUIRED)
 find_package(platform       REQUIRED)
@@ -23,8 +21,7 @@ include_directories(
         ${CURL_INCLUDE_DIR}
         ${OPUS_INCLUDE_DIR}
         ${PROJECT_SOURCE_DIR}/lib/pugixml/src
-        ${PROJECT_SOURCE_DIR}/src
-        ${PROJECT_SOURCE_DIR}/lib/moonlight/limelight-common)
+        ${PROJECT_SOURCE_DIR}/src)
 
 list(APPEND DEPLIBS
             ${kodiplatform_LIBRARIES}

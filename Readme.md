@@ -35,6 +35,21 @@ git clone https://github.com/Pulse-Eight/platform.git
 ...
 ```
 
+Moonlight is also required. As a dependency, it would normally be built by the add-on build system. However, when building stand-alone, we must provide it ourselves:
+
+```shell
+git clone https://github.com/moonlight-stream/moonlight-common-c.git
+cd moonlight-common-c
+wget https://raw.githubusercontent.com/garbear/game.moonlight/master/depends/common/moonlight-common-c/CMakeLists.txt
+mkdir build
+cd build
+cmake -DCMAKE_BUILD_TYPE=Debug \
+      -DCMAKE_INSTALL_PREFIX=$HOME/kodi \
+      ..
+make
+make install
+```
+
 With these dependencies in place, the add-on can be built. Point CMake to the add-on's build system instead of `$HOME/workspace/xbmc/project/cmake/addons`
 
 ```shell

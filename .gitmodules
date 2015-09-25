@@ -1,6 +1,3 @@
-[submodule "lib/moonlight"]
-	path = lib/moonlight
-	url = https://github.com/acmiyaguchi/moonlight-common-c.git
 [submodule "lib/pugixml"]
 	path = lib/pugixml
 	url = git@github.com:zeux/pugixml.git
