@@ -11,6 +11,7 @@ find_package(platform       REQUIRED)
 find_package(OpenSSL        REQUIRED)
 find_package(CURL           REQUIRED)
 find_package(Opus           REQUIRED)
+find_package(pugixml        REQUIRED)
 
 include_directories(
         ${INCLUDES}
@@ -20,7 +21,6 @@ include_directories(
         ${KODI_INCLUDE_DIR}
         ${CURL_INCLUDE_DIR}
         ${OPUS_INCLUDE_DIR}
-        ${PROJECT_SOURCE_DIR}/lib/pugixml/src
         ${PROJECT_SOURCE_DIR}/src)
 
 list(APPEND DEPLIBS
@@ -29,6 +29,7 @@ list(APPEND DEPLIBS
             ${OPENSSL_LIBRARIES}
             ${CURL_LIBRARIES}
             ${OPUS_LIBRARIES}
+            ${PUGIXML_LIBRARY}
             moonlight)
 
 set(MOONLIGHT_SOURCES   
@@ -48,8 +49,7 @@ set(MOONLIGHT_SOURCES
         src/settings/Settings.cpp
         src/callbacks/VideoCallbacks.cpp
         src/callbacks/ConnectionCallbacks.cpp
-        src/callbacks/AudioCallbacks.cpp
-        lib/pugixml/src/pugixml.cpp)
+        src/callbacks/AudioCallbacks.cpp)
 
 
 # build standalone

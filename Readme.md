@@ -50,6 +50,22 @@ make
 make install
 ```
 
+Ditto pugixml:
+
+```shell
+wget https://github.com/zeux/pugixml/releases/download/v1.6/pugixml-1.6.tar.gz
+tar -xzvf pugixml-1.6.tar.gz
+cd pugixml-1.6
+wget https://raw.githubusercontent.com/garbear/game.moonlight/master/depends/common/pugixml/CMakeLists.txt
+mkdir build
+cd build
+cmake -DCMAKE_BUILD_TYPE=Debug \
+      -DCMAKE_INSTALL_PREFIX=$HOME/kodi \
+      ..
+make
+make install
+```
+
 With these dependencies in place, the add-on can be built. Point CMake to the add-on's build system instead of `$HOME/workspace/xbmc/project/cmake/addons`
 
 ```shell
