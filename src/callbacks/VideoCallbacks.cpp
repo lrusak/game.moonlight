@@ -51,8 +51,6 @@ void decoder_renderer_cleanup()
 
 int decoder_renderer_submit_decode_unit(PDECODE_UNIT decodeUnit)
 {
-  int len = 0;
-
   std::vector<uint8_t> buffer;
   PLENTRY entry = decodeUnit->bufferList;
   while (entry != NULL)

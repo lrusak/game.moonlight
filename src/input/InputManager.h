@@ -49,7 +49,7 @@ namespace MOONLIGHT
     struct InputState
     {
       InputState()
-          : button(0), leftStickX(0), leftTrigger(0), rightTrigger(0),
+          : button(0), leftTrigger(0), rightTrigger(0), leftStickX(0),
               leftStickY(0), rightStickX(0), rightStickY(0)
       {
       }

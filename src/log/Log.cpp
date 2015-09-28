@@ -27,7 +27,7 @@
 #include "LogSyslog.h"
 #endif
 
-#include "threads/threads.h"
+#include "platform/threads/threads.h"
 
 #include <stdarg.h>
 #include <stdio.h>
@@ -85,8 +85,8 @@ void CLog::SetPipe(ILog* pipe)
 {
   PLATFORM::CLockObject lock(m_mutex);
 
-  const SYS_LOG_TYPE newType = pipe ? pipe->Type() : SYS_LOG_TYPE_NULL;
-  const SYS_LOG_TYPE oldType = m_pipe ? m_pipe->Type() : SYS_LOG_TYPE_NULL;
+  //const SYS_LOG_TYPE newType = pipe ? pipe->Type() : SYS_LOG_TYPE_NULL;
+  //const SYS_LOG_TYPE oldType = m_pipe ? m_pipe->Type() : SYS_LOG_TYPE_NULL;
 
   delete m_pipe;
   m_pipe = pipe;
@@ -96,8 +96,8 @@ void CLog::SetLevel(SYS_LOG_LEVEL level)
 {
   PLATFORM::CLockObject lock(m_mutex);
 
-  const SYS_LOG_LEVEL newLevel = level;
-  const SYS_LOG_LEVEL oldLevel = m_level;
+  //const SYS_LOG_LEVEL newLevel = level;
+  //const SYS_LOG_LEVEL oldLevel = m_level;
 
   m_level = level;
 }

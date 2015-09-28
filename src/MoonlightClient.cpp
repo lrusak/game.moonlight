@@ -149,6 +149,9 @@ bool CMoonlightClient::pair()
       case PairState::PAIRED:
         isyslog("Paired successfully");
         break;
+      case PairState::NOT_PAIRED:
+      default:
+        break;
     }
   }
 

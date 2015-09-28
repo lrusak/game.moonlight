@@ -189,6 +189,7 @@ bool MOONLIGHT::NvHTTP::resumeApp(STREAM_CONFIGURATION* config)
       << "&rikey=" << m_pm->bytesToHex((unsigned char*) config->remoteInputAesKey, 16)
       << "&rikeyid=" << rikey;
   std::string resp = openHttpConnection(url.str(), false);
+  return !resp.empty();
 }
 
 void MOONLIGHT::NvHTTP::initializeConfig(STREAM_CONFIGURATION* config)

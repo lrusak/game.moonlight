@@ -45,8 +45,8 @@ namespace MOONLIGHT
     bool make_cert(int bits, int serial, int years);
     bool add_extension(X509* cert, int nid, const char* value);
     std::string m_cert_path;
-    std::string m_pkey_path;
     std::string m_p12_path;
+    std::string m_pkey_path;
     X509* m_x509;
     EVP_PKEY* m_pkey;
     PKCS12* m_p12;
