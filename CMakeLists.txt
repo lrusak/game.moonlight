@@ -11,7 +11,6 @@ find_package(platform       REQUIRED)
 find_package(moonlight      REQUIRED)
 find_package(OpenSSL        REQUIRED)
 find_package(CURL           REQUIRED)
-find_package(Opus           REQUIRED)
 find_package(pugixml        REQUIRED)
 
 include_directories(
@@ -21,7 +20,6 @@ include_directories(
         ${platform_INCLUDE_DIRS}
         ${OPENSSL_INCLUDE_DIRS}
         ${CURL_INCLUDE_DIR}
-        ${OPUS_INCLUDE_DIR}
         ${PROJECT_SOURCE_DIR}/src)
 
 list(APPEND DEPLIBS
@@ -29,11 +27,10 @@ list(APPEND DEPLIBS
             ${platform_LIBRARIES}
             ${OPENSSL_LIBRARIES}
             ${CURL_LIBRARIES}
-            ${OPUS_LIBRARIES}
             ${PUGIXML_LIBRARY}
             ${MOONLIGHT_LIB})
 
-set(MOONLIGHT_SOURCES   
+set(MOONLIGHT_SOURCES
         src/MoonlightClient.cpp
         src/MoonlightEnvironment.cpp
         src/input/InputManager.cpp
