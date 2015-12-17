@@ -11,7 +11,6 @@ find_package(p8-platform    REQUIRED)
 find_package(moonlight      REQUIRED)
 find_package(OpenSSL        REQUIRED)
 find_package(CURL           REQUIRED)
-find_package(pugixml        REQUIRED)
 find_package(enet           REQUIRED)
 
 include_directories(
@@ -28,7 +27,6 @@ list(APPEND DEPLIBS
             ${p8-platform_LIBRARIES}
             ${OPENSSL_LIBRARIES}
             ${CURL_LIBRARIES}
-            ${PUGIXML_LIBRARY}
             ${MOONLIGHT_LIB}
             ${ENET_LIB})
 
