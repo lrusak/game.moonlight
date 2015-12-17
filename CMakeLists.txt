@@ -8,6 +8,7 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${PROJECT_SOURCE_DIR})
 find_package(kodi           REQUIRED)
 find_package(kodiplatform   REQUIRED)
 find_package(platform       REQUIRED)
+find_package(moonlight      REQUIRED)
 find_package(OpenSSL        REQUIRED)
 find_package(CURL           REQUIRED)
 find_package(Opus           REQUIRED)
@@ -30,7 +31,7 @@ list(APPEND DEPLIBS
             ${CURL_LIBRARIES}
             ${OPUS_LIBRARIES}
             ${PUGIXML_LIBRARY}
-            moonlight)
+            ${MOONLIGHT_LIB})
 
 set(MOONLIGHT_SOURCES   
         src/MoonlightClient.cpp
