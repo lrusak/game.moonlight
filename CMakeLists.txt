@@ -15,10 +15,10 @@ find_package(pugixml        REQUIRED)
 
 include_directories(
         ${INCLUDES}
-        ${platform_INCLUDE_DIRS}
-        ${kodiplatform_INCLUDE_DIRS}
-        ${OPENSSL_INCLUDE_DIRS}
         ${KODI_INCLUDE_DIR}
+        ${kodiplatform_INCLUDE_DIRS}
+        ${platform_INCLUDE_DIRS}
+        ${OPENSSL_INCLUDE_DIRS}
         ${CURL_INCLUDE_DIR}
         ${OPUS_INCLUDE_DIR}
         ${PROJECT_SOURCE_DIR}/src)
