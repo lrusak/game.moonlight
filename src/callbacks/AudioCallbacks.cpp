@@ -13,13 +13,15 @@ using namespace MOONLIGHT;
 
 static CHelper_libKODI_game* frontend = NULL;
 static OpusDecoder* m_decoder = NULL;
-static short pcmBuffer[FRAME_SIZE * CHANNEL_COUNT];
+static short* pcmBuffer = NULL;
 
-void audio_renderer_setup()
+void audio_renderer_setup(int audioConfiguration, POPUS_MULTISTREAM_CONFIGURATION opusConfig)
 {
   isyslog("Initialize audio");
-  m_decoder = opus_decoder_create(SAMPLE_RATE, CHANNEL_COUNT, NULL);
+  m_decoder = opus_decoder_create(opusConfig->sampleRate, opusConfig->channelCount, NULL);
   frontend = CMoonlightEnvironment::Get().GetFrontend();
+  delete pcmBuffer;
+  pcmBuffer = new short[FRAME_SIZE * opusConfig->channelCount];
 }
 
 void audio_renderer_cleanup()
@@ -29,6 +31,8 @@ void audio_renderer_cleanup()
     opus_decoder_destroy(m_decoder);
     m_decoder = NULL;
   }
+  delete pcmBuffer;
+  pcmBuffer = NULL;
 }
 
 void audio_renderer_decode_and_play_sample(char* sampleData, int sampleLength)
@@ -47,7 +51,7 @@ void audio_renderer_decode_and_play_sample(char* sampleData, int sampleLength)
 
 AUDIO_RENDERER_CALLBACKS MOONLIGHT::getAudioCallbacks()
 {
-  AUDIO_RENDERER_CALLBACKS callbacks =
+  AUDIO_RENDERER_CALLBACKS callbacks
   {
       audio_renderer_setup,
       audio_renderer_cleanup,
