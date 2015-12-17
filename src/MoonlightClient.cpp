@@ -25,6 +25,8 @@
 #include "settings/Settings.h"
 #include "callbacks/Callbacks.h"
 
+#include "Limelight.h"
+
 #include <iostream>
 #include <stddef.h>
 
