@@ -37,6 +37,8 @@ void decoder_renderer_setup(int width, int height, int redrawRate, void* context
   m_width = width;
   m_height = height;
   frontend = CMoonlightEnvironment::Get().GetFrontend();
+  if (!frontend->OpenVideoStream(GAME_VIDEO_FORMAT_H264, width, height))
+    frontend = nullptr;
 }
 
 void decoder_renderer_cleanup()
@@ -45,21 +47,22 @@ void decoder_renderer_cleanup()
 
   if (frontend)
   {
+    frontend->CloseVideoStream();
     frontend = NULL;
   }
 }
 
 int decoder_renderer_submit_decode_unit(PDECODE_UNIT decodeUnit)
 {
-  std::vector<uint8_t> buffer;
-  PLENTRY entry = decodeUnit->bufferList;
-  while (entry != NULL)
+  if (frontend)
   {
-    std::copy(entry->data, entry->data + entry->length, std::back_inserter(buffer));
-    entry = entry->next;
+    PLENTRY entry = decodeUnit->bufferList;
+    while (entry != NULL)
+    {
+      frontend->AddVideoData(reinterpret_cast<uint8_t*>(entry->data), entry->length);
+      entry = entry->next;
+    }
   }
-
-  frontend->VideoFrameH264(buffer.data(), buffer.size(), m_width, m_height);
 
   return DR_OK;
 }
