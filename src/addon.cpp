@@ -217,6 +217,11 @@ extern "C"
   {
   }
 
+  bool HasFeature(const char* controller_id, const char* feature_name)
+  {
+    return true;
+  }
+
   bool InputEvent(unsigned int port, const game_input_event* event)
   {
     if (!event)
