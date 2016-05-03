@@ -11,7 +11,8 @@ void audio_renderer_setup(int audioConfiguration, POPUS_MULTISTREAM_CONFIGURATIO
 {
   isyslog("Initialize audio");
   frontend = CMoonlightEnvironment::Get().GetFrontend();
-  if (!frontend->OpenAudioStream(GAME_AUDIO_FORMAT_OPUS, opusConfig->sampleRate, GAME_AUDIO_CHANNEL_UNKNOWN))
+  static const GAME_AUDIO_CHANNEL channelMap[] = { GAME_CH_FL, GAME_CH_FR, GAME_CH_NULL };
+  if (!frontend->OpenAudioStream(GAME_AUDIO_CODEC_OPUS, /* TODO opusConfig->sampleRate ,*/ channelMap))
     frontend = nullptr;
 }
 
@@ -20,7 +21,7 @@ void audio_renderer_cleanup()
   isyslog("Deinitialize audio");
   if (frontend)
   {
-    frontend->CloseAudioStream();
+    frontend->CloseStream(GAME_STREAM_AUDIO);
     frontend = NULL;
   }
 }
@@ -28,7 +29,7 @@ void audio_renderer_cleanup()
 void audio_renderer_decode_and_play_sample(char* sampleData, int sampleLength)
 {
   if (frontend)
-    frontend->AddAudioData(reinterpret_cast<uint8_t*>(sampleData), sampleLength);
+    frontend->AddStreamData(GAME_STREAM_AUDIO, reinterpret_cast<uint8_t*>(sampleData), sampleLength);
 }
 
 AUDIO_RENDERER_CALLBACKS MOONLIGHT::getAudioCallbacks()

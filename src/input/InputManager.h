@@ -41,7 +41,7 @@ namespace MOONLIGHT
     bool OpenPort();
     void ClosePort();
 
-    bool InputEvent(unsigned int port, const game_input_event& event);
+    bool InputEvent(const game_input_event& event);
     private:
     int GetIndex(const std::string& strControllerId, const std::string& strFeatureName);
     bool m_port_opened;

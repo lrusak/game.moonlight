@@ -97,10 +97,10 @@ int CInputManager::GetIndex(const std::string& strControllerId, const std::strin
   return -1;
 }
 
-bool CInputManager::InputEvent(unsigned int port, const game_input_event& event)
+bool CInputManager::InputEvent(const game_input_event& event)
 {
-  const std::string strControllerId = event.controller_id;
-  const std::string strFeatureName = event.feature_name;
+  const std::string strControllerId = event.controller_id ? event.controller_id : "";
+  const std::string strFeatureName = event.feature_name ? event.feature_name : "";
 
   if (!m_port_opened)
   {
