@@ -8,15 +8,17 @@
     <import addon="kodi.game" version="1.0.20"/>
   </requires>
   <extension point="kodi.gameclient"
-    library_android="game.moonlight.so"
+    library_android="libgame.moonlight.so"
     library_linux="game.moonlight.so"
     library_osx="game.moonlight.dylib"
     library_windx="game.moonlight.dll"
     library_wingl="game.moonlight.dll">
     <platforms></platforms>
     <extensions></extensions>
+    <supports_game_loop>false</supports_game_loop>
     <supports_vfs>true</supports_vfs>
-    <supports_no_game>true</supports_no_game>
+    <supports_standalone>true</supports_standalone>
+    <supports_keyboard>false</supports_keyboard>
   </extension>
   <extension point="xbmc.addon.metadata">
     <summary lang="en">Kodi Moonlight Client</summary>
