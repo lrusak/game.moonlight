@@ -194,8 +194,14 @@ extern "C"
     return GAME_REGION_NTSC;
   }
 
-  void FrameEvent(void)
+  bool RequiresGameLoop(void)
   {
+    return false;
+  }
+
+  GAME_ERROR RunFrame(void)
+  {
+    return GAME_ERROR_FAILED;
   }
 
   GAME_ERROR Reset(void)
