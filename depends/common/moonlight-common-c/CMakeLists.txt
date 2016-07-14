@@ -20,6 +20,9 @@ set(MOONLIGHT_SOURCES
     src/VideoStream.c
 )
 
+# Requires git submodule init/update
+include_directories(enet/include)
+
 set(CMAKE_POSITION_INDEPENDENT_CODE ON) 
 add_library(${PROJECT_NAME} STATIC ${MOONLIGHT_SOURCES})
 
