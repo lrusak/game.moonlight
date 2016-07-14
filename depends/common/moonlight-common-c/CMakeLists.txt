@@ -1,6 +1,8 @@
 project(moonlight)
 cmake_minimum_required(VERSION 2.8)
 
+find_package(OpenSSL REQUIRED)
+
 set(MOONLIGHT_SOURCES
     src/AudioStream.c
     src/ByteBuffer.c
@@ -20,8 +22,11 @@ set(MOONLIGHT_SOURCES
     src/VideoStream.c
 )
 
-# Requires git submodule init/update
-include_directories(enet/include)
+
+include_directories(
+    ${OPENSSL_INCLUDE_DIRS}
+    enet/include
+)
 
 set(CMAKE_POSITION_INDEPENDENT_CODE ON) 
 add_library(${PROJECT_NAME} STATIC ${MOONLIGHT_SOURCES})
