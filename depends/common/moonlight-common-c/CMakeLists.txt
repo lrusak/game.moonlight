@@ -2,24 +2,22 @@ project(moonlight)
 cmake_minimum_required(VERSION 2.8)
 
 set(MOONLIGHT_SOURCES
-    limelight-common/OpenAES/oaes_base64.c
-    limelight-common/OpenAES/oaes_lib.c
-    limelight-common/AudioStream.c
-    limelight-common/ByteBuffer.c
-    limelight-common/Connection.c
-    limelight-common/ControlStream.c
-    limelight-common/FakeCallbacks.c
-    limelight-common/InputStream.c
-    limelight-common/LinkedBlockingQueue.c
-    limelight-common/Misc.c
-    limelight-common/Platform.c
-    limelight-common/PlatformSockets.c
-    limelight-common/RtpReorderQueue.c
-    limelight-common/RtspConnection.c
-    limelight-common/RtspParser.c
-    limelight-common/SdpGenerator.c
-    limelight-common/VideoDepacketizer.c
-    limelight-common/VideoStream.c
+    src/AudioStream.c
+    src/ByteBuffer.c
+    src/Connection.c
+    src/ControlStream.c
+    src/FakeCallbacks.c
+    src/InputStream.c
+    src/LinkedBlockingQueue.c
+    src/Misc.c
+    src/Platform.c
+    src/PlatformSockets.c
+    src/RtpReorderQueue.c
+    src/RtspConnection.c
+    src/RtspParser.c
+    src/SdpGenerator.c
+    src/VideoDepacketizer.c
+    src/VideoStream.c
 )
 
 set(CMAKE_POSITION_INDEPENDENT_CODE ON) 
@@ -30,7 +28,7 @@ install(TARGETS ${PROJECT_NAME}
         ARCHIVE DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
 
 # Install the header
-install(FILES limelight-common/Limelight.h
+install(FILES src/Limelight.h
         DESTINATION ${CMAKE_INSTALL_PREFIX}/include)
 
 # Write the moonlight-config.cmake script
