@@ -12,6 +12,7 @@ find_package(moonlight      REQUIRED)
 find_package(OpenSSL        REQUIRED)
 find_package(CURL           REQUIRED)
 find_package(pugixml        REQUIRED)
+find_package(enet           REQUIRED)
 
 include_directories(
         ${INCLUDES}
@@ -28,7 +29,8 @@ list(APPEND DEPLIBS
             ${OPENSSL_LIBRARIES}
             ${CURL_LIBRARIES}
             ${PUGIXML_LIBRARY}
-            ${MOONLIGHT_LIB})
+            ${MOONLIGHT_LIB}
+            ${ENET_LIB})
 
 set(MOONLIGHT_SOURCES
         src/MoonlightClient.cpp
