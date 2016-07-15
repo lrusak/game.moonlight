@@ -61,6 +61,6 @@ namespace MOONLIGHT
   private:
     ILog* m_pipe;
     SYS_LOG_LEVEL m_level;
-    PLATFORM::CMutex m_mutex;
+    P8PLATFORM::CMutex m_mutex;
   };
 }

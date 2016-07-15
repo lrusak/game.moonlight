@@ -40,6 +40,6 @@ namespace MOONLIGHT
     }
 
   private:
-    PLATFORM::CMutex m_mutex;
+    P8PLATFORM::CMutex m_mutex;
   };
 }

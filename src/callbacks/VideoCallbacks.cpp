@@ -24,7 +24,7 @@
 #include "Limelight.h"
 
 using namespace MOONLIGHT;
-using namespace PLATFORM;
+using namespace P8PLATFORM;
 
 static CHelper_libKODI_game* frontend = NULL;
 static int m_width = 0;
