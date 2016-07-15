@@ -2,6 +2,7 @@ project(moonlight)
 cmake_minimum_required(VERSION 2.8)
 
 find_package(OpenSSL REQUIRED)
+find_package(enet REQUIRED)
 
 set(MOONLIGHT_SOURCES
     src/AudioStream.c
