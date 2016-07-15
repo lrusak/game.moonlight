@@ -30,7 +30,7 @@ static CHelper_libKODI_game* frontend = NULL;
 static int m_width = 0;
 static int m_height = 0;
 
-void decoder_renderer_setup(int width, int height, int redrawRate, void* context, int drFlags)
+void decoder_renderer_setup(int videoFormat, int width, int height, int redrawRate, void* context, int drFlags)
 {
   isyslog("VideoCallbacks::Setup");
 

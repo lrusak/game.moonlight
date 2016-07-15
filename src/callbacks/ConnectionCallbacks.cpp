@@ -8,12 +8,12 @@ void connection_connection_terminated(long errorCode)
   isyslog("Error code: %i", errorCode);
 }
 
-void connection_display_message(char *msg)
+void connection_display_message(const char *msg)
 {
   isyslog("%s", msg);
 }
 
-void connection_display_transient_message(char *msg)
+void connection_display_transient_message(const char *msg)
 {
   isyslog("%s", msg);
 }
