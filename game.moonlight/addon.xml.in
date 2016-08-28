@@ -8,11 +8,7 @@
     <import addon="kodi.game" version="1.0.24"/>
   </requires>
   <extension point="kodi.gameclient"
-    library_android="libgame.moonlight.so"
-    library_linux="game.moonlight.so"
-    library_osx="game.moonlight.dylib"
-    library_windx="game.moonlight.dll"
-    library_wingl="game.moonlight.dll">
+        library_@platform@="@LIBRARY_FILENAME@">
     <platforms></platforms>
     <extensions></extensions>
     <supports_vfs>true</supports_vfs>
@@ -22,7 +18,7 @@
   <extension point="xbmc.addon.metadata">
     <summary lang="en">Kodi Moonlight Client</summary>
     <description lang="en">Moonlight Client for Kodi.</description>
-    <platform>all</platform>
+    <platform>@PALTFORM@</platform>
     <noicon>false</noicon>
     <nofanart>true</nofanart>
   </extension>
