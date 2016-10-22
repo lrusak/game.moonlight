@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <addon
-  id="game.moonlight"
-  version="1.0.0"
-  name="Moonlight Client"
-  provider-name="acmiyaguchi">
-  <requires>
-    <import addon="kodi.game" version="1.0.25"/>
-  </requires>
-  <extension point="kodi.gameclient"
-        library_@platform@="@LIBRARY_FILENAME@">
-    <platforms></platforms>
-    <extensions></extensions>
-    <supports_vfs>true</supports_vfs>
-    <supports_standalone>true</supports_standalone>
-    <supports_keyboard>false</supports_keyboard>
-  </extension>
-  <extension point="xbmc.addon.metadata">
-    <summary lang="en">Kodi Moonlight Client</summary>
-    <description lang="en">Moonlight Client for Kodi.</description>
-    <platform>@PALTFORM@</platform>
-    <noicon>false</noicon>
-    <nofanart>true</nofanart>
-  </extension>
+	id="game.moonlight"
+	version="1.0.0"
+	name="Moonlight Client"
+	provider-name="acmiyaguchi">
+	<requires>
+		<import addon="kodi.game" version="1.0.27"/>
+	</requires>
+	<extension point="kodi.gameclient"
+				library_@PLATFORM@="@LIBRARY_FILENAME@">
+		<platforms></platforms>
+		<extensions></extensions>
+		<supports_vfs>true</supports_vfs>
+		<supports_standalone>true</supports_standalone>
+		<supports_keyboard>false</supports_keyboard>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary lang="en">Kodi Moonlight Client</summary>
+		<description lang="en">Moonlight Client for Kodi.</description>
+		<platform>@PLATFORM@</platform>
+		<noicon>false</noicon>
+		<nofanart>true</nofanart>
+	</extension>
 </addon>
