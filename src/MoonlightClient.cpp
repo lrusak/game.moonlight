@@ -107,7 +107,10 @@ bool CMoonlightClient::start()
     }
   }
 
-  LiStartConnection(m_host.c_str(), &config, &conn_cb, &video_cb, &audio_cb, NULL, 0, 0);
+  SERVER_INFORMATION serverInfo;
+  LiInitializeServerInformation(&serverInfo);
+  serverInfo.address = m_host.c_str();
+  LiStartConnection(&serverInfo, &config, &conn_cb, &video_cb, &audio_cb, NULL, 0);
   return true;
 }
 
