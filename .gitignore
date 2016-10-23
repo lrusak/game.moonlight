@@ -1,3 +1,18 @@
-/build
+# IDE ignorables
+.build
 .cproject
+.deps
+.libs
 .project
+.settings
+
+# CMake ignorables
+build
+Build
+
+# Add-on specific files
+game.moonlight/project/VS2010Express/Debug
+game.moonlight/project/VS2010Express/Release
+game.moonlight/*.so
+game.moonlight/*.dll
+game.moonlight/addon.xml
