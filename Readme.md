@@ -112,7 +112,7 @@ make install
 Moonlight is also required:
 
 ```shell
-git clone https://github.com/moonlight-stream/moonlight-common-c
+git clone --recursive https://github.com/moonlight-stream/moonlight-common-c
 cd moonlight-common-c
 wget https://raw.githubusercontent.com/garbear/game.moonlight/master/depends/common/moonlight-common-c/CMakeLists.txt
 mkdir build
