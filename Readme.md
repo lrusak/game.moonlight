@@ -127,7 +127,7 @@ make install
 Also for pugixml:
 
 ```shell
-wget https://github.com/zeux/pugixml/releases/download/v1.6/pugixml-1.6.tar.gz
+wget https://github.com/zeux/pugixml/releases/download/v1.7/pugixml-1.7.tar.gz
 tar -xzvf pugixml-1.6.tar.gz
 cd pugixml-1.6
 wget https://raw.githubusercontent.com/garbear/game.moonlight/master/depends/common/pugixml/CMakeLists.txt
