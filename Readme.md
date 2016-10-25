@@ -1,6 +1,9 @@
 # game.moonlight
 
-A Moonlight client using the Kodi Game API
+A Moonlight client using the Kodi Game API.
+
+Moonlight is an open source implementation of NVIDIA GameStream and allows to
+stream your collection of Steam games from the gaming machine to the client.
 
 ## Building
 
