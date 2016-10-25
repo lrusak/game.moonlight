@@ -1,8 +1,7 @@
+cmake_minimum_required(VERSION 3.1)
 project(moonlight)
-cmake_minimum_required(VERSION 2.8)
 
 find_package(OpenSSL REQUIRED)
-find_package(enet REQUIRED)
 
 set(MOONLIGHT_SOURCES
     src/AudioStream.c
@@ -23,18 +22,21 @@ set(MOONLIGHT_SOURCES
     src/VideoStream.c
 )
 
-
 include_directories(
-    ${OPENSSL_INCLUDE_DIRS}
+    ${OPENSSL_INCLUDE_DIR}
     enet/include
 )
 
-set(CMAKE_POSITION_INDEPENDENT_CODE ON) 
-add_library(${PROJECT_NAME} STATIC ${MOONLIGHT_SOURCES})
+set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+add_library(${PROJECT_NAME} STATIC ${MOONLIGHT_SOURCES} ${ENET_SOURCES})
+
+add_subdirectory(enet)
+target_link_libraries(${PROJECT_NAME} PRIVATE enet)
 
 # Install the generated static library
 install(TARGETS ${PROJECT_NAME}
         ARCHIVE DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
+install(FILES "$<TARGET_FILE:enet>" DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
 
 # Install the header
 install(FILES src/Limelight.h
@@ -42,4 +44,6 @@ install(FILES src/Limelight.h
 
 # Write the moonlight-config.cmake script
 file(WRITE ${CMAKE_INSTALL_PREFIX}/${PROJECT_NAME}-config.cmake
-     "set(MOONLIGHT_LIB ${CMAKE_INSTALL_PREFIX}/lib/${CMAKE_STATIC_LIBRARY_PREFIX}${PROJECT_NAME}${CMAKE_STATIC_LIBRARY_SUFFIX})")
+    "set(MOONLIGHT_LIBRARIES ${CMAKE_INSTALL_PREFIX}/lib/${CMAKE_STATIC_LIBRARY_PREFIX}${PROJECT_NAME}${CMAKE_STATIC_LIBRARY_SUFFIX}\n \
+                             ${CMAKE_INSTALL_PREFIX}/lib/${CMAKE_STATIC_LIBRARY_PREFIX}enet${CMAKE_STATIC_LIBRARY_SUFFIX})\n \
+     set(MOONLIGHT_INCLUDE_DIRS ${CMAKE_INSTALL_PREFIX}/include)")

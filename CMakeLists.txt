@@ -1,56 +1,55 @@
+cmake_minimum_required(VERSION 3.1)
 project(game.moonlight)
-
-cmake_minimum_required(VERSION 2.6)
-enable_language(CXX)
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${PROJECT_SOURCE_DIR})
 
 find_package(Kodi           REQUIRED)
-find_package(kodiplatform   REQUIRED)
 find_package(p8-platform    REQUIRED)
+
 find_package(moonlight      REQUIRED)
 find_package(OpenSSL        REQUIRED)
-find_package(CURL           REQUIRED)
+find_package(ZLIB           REQUIRED)
+find_package(CURL           REQUIRED)  # FIXME depends
 find_package(pugixml        REQUIRED)
-find_package(enet           REQUIRED)
 
 include_directories(
-        ${INCLUDES}
-        ${KODI_INCLUDE_DIR}
-        ${kodiplatform_INCLUDE_DIRS}
-        ${p8-platform_INCLUDE_DIRS}
-        ${OPENSSL_INCLUDE_DIRS}
-        ${CURL_INCLUDE_DIR}
-        ${PROJECT_SOURCE_DIR}/src)
+    ${KODI_INCLUDE_DIR}
+    ${p8-platform_INCLUDE_DIRS}
+    ${OPENSSL_INCLUDE_DIR}
+    ${ZLIB_INCLUDE_DIRS}
+    ${CURL_INCLUDE_DIR}  # FIXME depends
+    ${MOONLIGHT_INCLUDE_DIRS}
+    ${PROJECT_SOURCE_DIR}/src
+)
 
 list(APPEND DEPLIBS
-            ${kodiplatform_LIBRARIES}
-            ${p8-platform_LIBRARIES}
-            ${OPENSSL_LIBRARIES}
-            ${CURL_LIBRARIES}
-            ${PUGIXML_LIBRARY}
-            ${MOONLIGHT_LIB}
-            ${ENET_LIB})
+    ${p8-platform_LIBRARIES}
+    ${OPENSSL_LIBRARIES}
+    ${ZLIB_LIBRARIES}
+    ${CURL_LIBRARIES} # Fixme depends
+    ${PUGIXML_LIBRARY}
+    ${MOONLIGHT_LIBRARIES}
+)
 
 set(MOONLIGHT_SOURCES
-        src/MoonlightClient.cpp
-        src/MoonlightEnvironment.cpp
-        src/input/InputManager.cpp
-        src/log/Log.cpp
-        src/log/LogAddon.cpp
-        src/log/LogConsole.cpp
-        src/log/LogSyslog.cpp
-        src/nvstream/CertKeyPair.cpp
-        src/nvstream/NvApp.cpp
-        src/nvstream/NvHTTP.cpp
-        src/nvstream/PairingManager.cpp
-        src/nvstream/http.c
-        src/settings/Resolution.cpp
-        src/settings/Settings.cpp
-        src/callbacks/VideoCallbacks.cpp
-        src/callbacks/ConnectionCallbacks.cpp
-        src/callbacks/AudioCallbacks.cpp)
-
+    src/MoonlightClient.cpp
+    src/MoonlightEnvironment.cpp
+    src/input/InputManager.cpp
+    src/log/Log.cpp
+    src/log/LogAddon.cpp
+    src/log/LogConsole.cpp
+    src/log/LogSyslog.cpp
+    src/nvstream/CertKeyPair.cpp
+    src/nvstream/NvApp.cpp
+    src/nvstream/NvHTTP.cpp
+    src/nvstream/PairingManager.cpp
+    src/nvstream/http.c
+    src/settings/Resolution.cpp
+    src/settings/Settings.cpp
+    src/callbacks/VideoCallbacks.cpp
+    src/callbacks/ConnectionCallbacks.cpp
+    src/callbacks/AudioCallbacks.cpp
+)
 
 # build standalone
 set(STANDALONE_SOURCES ${MOONLIGHT_SOURCES} src/main.cpp)
