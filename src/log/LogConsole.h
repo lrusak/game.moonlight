@@ -22,7 +22,7 @@
 
 #include "ILog.h"
 
-#include "threads/mutex.h"
+#include "p8-platform/threads/mutex.h"
 
 namespace MOONLIGHT
 {
