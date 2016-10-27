@@ -7,6 +7,7 @@ find_package(Kodi           REQUIRED)
 find_package(p8-platform    REQUIRED)
 
 find_package(moonlight      REQUIRED)
+find_package(enet           REQUIRED)
 find_package(OpenSSL        REQUIRED)
 find_package(ZLIB           REQUIRED)
 find_package(CURL           REQUIRED)  # FIXME depends
@@ -19,6 +20,7 @@ include_directories(
     ${ZLIB_INCLUDE_DIRS}
     ${CURL_INCLUDE_DIR}  # FIXME depends
     ${MOONLIGHT_INCLUDE_DIRS}
+    ${ENET_INCLUDE_DIRS}
     ${PROJECT_SOURCE_DIR}/src
 )
 
@@ -29,6 +31,7 @@ list(APPEND DEPLIBS
     ${CURL_LIBRARIES} # Fixme depends
     ${PUGIXML_LIBRARIES}
     ${MOONLIGHT_LIBRARIES}
+    ${ENET_LIBRARIES}
 )
 
 set(MOONLIGHT_SOURCES
@@ -86,4 +89,3 @@ elseif(CMAKE_COMPILER_IS_GNUCC OR CMAKE_COMPILER_IS_GNUCXX)
     # Update if necessary
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wno-long-long ${WARN_PEDANTIC}")
 endif()
-
