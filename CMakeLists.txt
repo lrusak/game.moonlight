@@ -21,6 +21,7 @@ include_directories(
     ${CURL_INCLUDE_DIR}  # FIXME depends
     ${MOONLIGHT_INCLUDE_DIRS}
     ${ENET_INCLUDE_DIRS}
+    ${PUGIXML_INCLUDE_DIRS}
     ${PROJECT_SOURCE_DIR}/src
 )
 
