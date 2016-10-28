@@ -6,38 +6,41 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${PROJECT_SOURCE_DIR})
 find_package(Kodi           REQUIRED)
 find_package(p8-platform    REQUIRED)
 
-find_package(moonlight      REQUIRED)
-find_package(enet           REQUIRED)
-find_package(OpenSSL        REQUIRED)
-find_package(ZLIB           REQUIRED)
 find_package(CURL           REQUIRED)  # FIXME depends
+find_package(enet           REQUIRED)
+find_package(moonlight      REQUIRED)
+find_package(OpenSSL        REQUIRED)
 find_package(pugixml        REQUIRED)
+find_package(ZLIB           REQUIRED)
 
 include_directories(
+    ${PROJECT_SOURCE_DIR}/src
     ${KODI_INCLUDE_DIR}
     ${p8-platform_INCLUDE_DIRS}
-    ${OPENSSL_INCLUDE_DIR}
-    ${ZLIB_INCLUDE_DIRS}
+
     ${CURL_INCLUDE_DIR}  # FIXME depends
-    ${MOONLIGHT_INCLUDE_DIRS}
     ${ENET_INCLUDE_DIRS}
+    ${MOONLIGHT_INCLUDE_DIRS}
+    ${OPENSSL_INCLUDE_DIR}
     ${PUGIXML_INCLUDE_DIRS}
-    ${PROJECT_SOURCE_DIR}/src
+    ${ZLIB_INCLUDE_DIRS}
 )
 
 list(APPEND DEPLIBS
     ${p8-platform_LIBRARIES}
-    ${OPENSSL_LIBRARIES}
-    ${ZLIB_LIBRARIES}
+
     ${CURL_LIBRARIES} # Fixme depends
-    ${PUGIXML_LIBRARIES}
-    ${MOONLIGHT_LIBRARIES}
     ${ENET_LIBRARIES}
+    ${MOONLIGHT_LIBRARIES}
+    ${OPENSSL_LIBRARIES}
+    ${PUGIXML_LIBRARIES}
+    ${ZLIB_LIBRARIES}
 )
 
 set(MOONLIGHT_SOURCES
-    src/MoonlightClient.cpp
-    src/MoonlightEnvironment.cpp
+    src/callbacks/AudioCallbacks.cpp
+    src/callbacks/ConnectionCallbacks.cpp
+    src/callbacks/VideoCallbacks.cpp
     src/input/InputManager.cpp
     src/log/Log.cpp
     src/log/LogAddon.cpp
@@ -50,9 +53,8 @@ set(MOONLIGHT_SOURCES
     src/nvstream/http.c
     src/settings/Resolution.cpp
     src/settings/Settings.cpp
-    src/callbacks/VideoCallbacks.cpp
-    src/callbacks/ConnectionCallbacks.cpp
-    src/callbacks/AudioCallbacks.cpp
+    src/MoonlightClient.cpp
+    src/MoonlightEnvironment.cpp
 )
 
 # build standalone
