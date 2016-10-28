@@ -72,9 +72,19 @@ When developing, compiling from a git repo is more convenient than repeatedly pu
 
 ### Developing on Linux
 
-The add-on requires several dependencies to build properly. Like Kodi's build system, you can perform a system install or a local one (demonstrated here).
+The add-on requires several dependencies to build properly. Like Kodi's build system, you can perform a system install or a local one (demonstrated here). The dependencies can be found in [depends/common](depends/common):
 
-First, clone p8-platform and build per standard CMake:
+* p8-platform
+* kodi-platform
+* zlib
+* openssl
+* enet
+* moonlight-common-c
+* pugixml (will be replaced by tinyxml2 in the future)
+
+You can provide them yourself, or build and install them to the kodi `--prefix` directory that you passed to `./configure`. Follow the instructions below if you're not providing them yourself:
+
+#### p8-platform
 
 ```shell
 git clone https://github.com/Pulse-Eight/platform.git
@@ -86,22 +96,63 @@ cmake -DCMAKE_BUILD_TYPE=Debug \
       ..
 make
 make install
+cd ../..
 ```
 
-The kodi-platform library was split from p8-platform. Do the same as above for this library:
+#### kodi-platform
 
-```
+```shell
 git clone https://github.com/xbmc/kodi-platform.git
 cd kodi-platform
-...
+mkdir build
+cd build
+cmake -DCMAKE_BUILD_TYPE=Debug \
+      -DCMAKE_INSTALL_PREFIX=$HOME/kodi \
+      ..
+make
+make install
+cd ../..
 ```
 
-Moonlight-common-c requires enet:
+#### zlib
+
+```shell
+wget http://mirrors.xbmc.org/build-deps/sources/zlib-1.2.8.tar.gz
+tar -xzvf zlib-1.2.8.tar.gz
+cd zlib-1.2.8
+mkdir build
+cd build
+cmake -DCMAKE_BUILD_TYPE=Debug \
+      -DCMAKE_INSTALL_PREFIX=$HOME/kodi \
+      ..
+make
+make install
+cd ../..
+```
+
+#### openssl
+
+```shell
+wget http://mirrors.xbmc.org/build-deps/sources/openssl-1.0.2h.tar.gz
+tar -xzvf openssl-1.0.2h.tar.gz
+cd openssl-1.0.2h
+wget https://raw.githubusercontent.com/kodi-game/game.moonlight/master/depends/common/openssl/CMakeLists.txt
+mkdir build
+cd build
+cmake -DCMAKE_BUILD_TYPE=Debug \
+      -DCMAKE_INSTALL_PREFIX=$HOME/kodi \
+      ..
+make
+make install
+cd ../..
+```
+
+#### enet
 
 ```
 git clone https://github.com/cgutman/enet
 cd enet
-wget https://raw.githubusercontent.com/garbear/game.moonlight/master/depends/common/enet/0001-cmake-Add-missing-install-scripts-and-set-PIC-to-ON.patch -O - | patch
+wget https://raw.githubusercontent.com/kodi-game/game.moonlight/master/depends/common/enet/0001-cmake-Add-missing-install-scripts-and-set-PIC-to-ON.patch -O - | patch
 mkdir build
 cd build
 cmake -DCMAKE_BUILD_TYPE=Debug \
@@ -109,14 +160,15 @@ cmake -DCMAKE_BUILD_TYPE=Debug \
       ..
 make
 make install
+cd ../..
 ```
 
-Moonlight is also required:
+#### moonlight-common-c
 
 ```shell
-git clone --recursive https://github.com/moonlight-stream/moonlight-common-c
+git clone https://github.com/moonlight-stream/moonlight-common-c
 cd moonlight-common-c
-wget https://raw.githubusercontent.com/garbear/game.moonlight/master/depends/common/moonlight-common-c/CMakeLists.txt
+wget https://raw.githubusercontent.com/kodi-game/game.moonlight/master/depends/common/moonlight-common-c/CMakeLists.txt
 mkdir build
 cd build
 cmake -DCMAKE_BUILD_TYPE=Debug \
@@ -124,15 +176,16 @@ cmake -DCMAKE_BUILD_TYPE=Debug \
       ..
 make
 make install
+cd ../..
 ```
 
-Also for pugixml:
+#### pugixml
 
 ```shell
 wget https://github.com/zeux/pugixml/releases/download/v1.7/pugixml-1.7.tar.gz
-tar -xzvf pugixml-1.6.tar.gz
-cd pugixml-1.6
-wget https://raw.githubusercontent.com/garbear/game.moonlight/master/depends/common/pugixml/CMakeLists.txt
+tar -xzvf pugixml-1.7.tar.gz
+cd pugixml-1.7
+wget https://raw.githubusercontent.com/kodi-game/game.moonlight/master/depends/common/pugixml/CMakeLists.txt
 mkdir build
 cd build
 cmake -DCMAKE_BUILD_TYPE=Debug \
@@ -140,7 +193,10 @@ cmake -DCMAKE_BUILD_TYPE=Debug \
       ..
 make
 make install
+cd ../..
 ```
+
+#### game.moonlight
 
 With these dependencies in place, the add-on can be built:
 
