@@ -22,7 +22,7 @@
 #include "LogAddon.h"
 #include "utils/CommonMacros.h"
 
-#include "kodi/libXBMC_addon.h"
+#include "libXBMC_addon.h"
 
 using namespace MOONLIGHT;
 
