@@ -4,6 +4,7 @@ project(game.moonlight)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${PROJECT_SOURCE_DIR})
 
 find_package(Kodi           REQUIRED)
+find_package(kodiplatform   REQUIRED)
 find_package(p8-platform    REQUIRED)
 
 find_package(CURL           REQUIRED)  # FIXME depends
@@ -17,7 +18,6 @@ include_directories(
     ${PROJECT_SOURCE_DIR}/src
     ${KODI_INCLUDE_DIR}
     ${p8-platform_INCLUDE_DIRS}
-
     ${CURL_INCLUDE_DIR}  # FIXME depends
     ${ENET_INCLUDE_DIRS}
     ${MOONLIGHT_INCLUDE_DIRS}
@@ -27,11 +27,11 @@ include_directories(
 )
 
 list(APPEND DEPLIBS
+    ${kodiplatform_LIBRARIES}
     ${p8-platform_LIBRARIES}
-
     ${CURL_LIBRARIES} # Fixme depends
-    ${ENET_LIBRARIES}
     ${MOONLIGHT_LIBRARIES}
+    ${ENET_LIBRARIES}
     ${OPENSSL_LIBRARIES}
     ${PUGIXML_LIBRARIES}
     ${ZLIB_LIBRARIES}
