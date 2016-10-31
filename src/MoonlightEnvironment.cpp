@@ -20,8 +20,8 @@
 
 #include "MoonlightEnvironment.h"
 #include "MoonlightClient.h"
-#include "kodi/libXBMC_addon.h"
-#include "kodi/libKODI_game.h"
+#include "libXBMC_addon.h"
+#include "libKODI_game.h"
 
 using namespace ADDON;
 using namespace MOONLIGHT;

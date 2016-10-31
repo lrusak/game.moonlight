@@ -20,7 +20,7 @@
 #include "Callbacks.h"
 #include "log/Log.h"
 #include "MoonlightEnvironment.h"
-#include "kodi/libKODI_game.h"
+#include "libKODI_game.h"
 #include "Limelight.h"
 
 using namespace MOONLIGHT;
